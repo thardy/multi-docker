@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t thardy/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t timhardy/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true thardy/react-test npm test
+  - docker run -e CI=true timhardy/react-test npm test
 
 after_success:
-  - docker build -t thardy/multi-client ./client
-  - docker build -t thardy/multi-nginx ./nginx
-  - docker build -t thardy/multi-server ./server
-  - docker build -t thardy/multi-worker ./worker
+  - docker build -t timhardy/multi-client ./client
+  - docker build -t timhardy/multi-nginx ./nginx
+  - docker build -t timhardy/multi-server ./server
+  - docker build -t timhardy/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker r_github_packages:
-  - docker push thardy/multi-client
-  - docker push thardy/multi-nginx
-  - docker push thardy/multi-server
-  - docker push thardy/multi-worker
+  - docker push timhardy/multi-client
+  - docker push timhardy/multi-nginx
+  - docker push timhardy/multi-server
+  - docker push timhardy/multi-worker
 
 
 
