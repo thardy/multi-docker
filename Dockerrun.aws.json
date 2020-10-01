@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "conterDefinitions": [
+  "containerDefinitions": [
     {
       "name": "client",
       "image": "timhardy/multi-client",
